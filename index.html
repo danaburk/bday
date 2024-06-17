@@ -58,14 +58,16 @@
 </head>
 <body>
     <div class="container">
-        <h1>Төрсөн өдрийн мэнд хүргэе!</h1>
+        <h1>Happy Birthday!</h1>
         <p>Төрсөн өдрийн мэнд, Эмүжин! Монгол Улсын иргэн болж байгаад чинь баяр хүргэе!</p>
         
         <div class="puzzle">
-            <h2>Оньс </h2>
-            <p>Зөв үгийг олоорой "жич бүгдийг нь томоор": <strong id="scrambled-word">DANANA</strong></p>
-            <input type="text" id="guess" placeholder="Your guess">
-            <button onclick="checkAnswer()">Submit</button>
+            <h2>Дууны үгийг таагаарай</h2>
+            <p>Зүрхэн хэлбэрт <strong id="missing-word-1">-----</strong></p>
+            <p>Зуун жил хоцорч <strong id="missing-word-2">-----</strong></p>
+            <input type="text" id="guess1" placeholder="Нөхөх эхний үг чинь">
+            <input type="text" id="guess2" placeholder="Нөхөх хоёр дох үг чинь">
+            <button onclick="checkAnswers()">Submit</button>
             <p id="result"></p>
         </div>
 
@@ -75,15 +77,16 @@
     </div>
 
     <script>
-        const correctWord = "ANAND";
-        
-        function checkAnswer() {
-            const guess = document.getElementById('guess').value.toUpperCase();
+        const correctAnswers = ["бороо", "ирлээ"];
+
+        function checkAnswers() {
+            const guess1 = document.getElementById('guess1').value.trim();
+            const guess2 = document.getElementById('guess2').value.trim();
             const result = document.getElementById('result');
             const rewardImage = document.getElementById('rewardImage');
             
-            if (guess === correctWord) {
-                result.textContent = "Зөв байна! Шагналд нь торт";
+            if (guess1 === correctAnswers[0] && guess2 === correctAnswers[1]) {
+                result.textContent = "Зөв байна! Төрсөн өдрийн мэнд!";
                 result.style.color = "green";
                 rewardImage.style.display = "block"; // Show the image as a reward
             } else {
